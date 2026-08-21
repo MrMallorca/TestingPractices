@@ -1,38 +1,41 @@
-function analyzeArray()
+function analyzeArray(array)
 {
-    let arrayPrueba = [1,2,3,5,6,9];
+    const object = {
+        average: findAverage(array),
+        min: findMin(array),
+        max: findMax(array),
+        length: findLength(array)
+    };
 
-    findMin(arrayPrueba);
+    console.log(object);
+
+    return object;
 }
 
-function average()
+function findAverage(array)
 {
+    let total = 0;
+    for(let i = 0; i < array.length; i++) {
+        total += array[i];
+    }
+    let avg = total / array.length;    
 
+    return avg;
 }
 
 function findMin(array)
 {
-
-    Array.prototype.min = function() {
-    return Math.min.apply(null, this);
-    };
-
-    const min = Math.min(array);
-
-    console.log(min);
-
+    return Math.min(...array);
 }
 
 function findMax(array)
 {
-    Array.prototype.max = function() {
-    return Math.max.apply(null, this);
-    };
+    return Math.max(...array);
 }
 
-function length()
+function findLength(array)
 {
-
+    return array.length;
 }
 
-analyzeArray();
+module.exports = analyzeArray;
